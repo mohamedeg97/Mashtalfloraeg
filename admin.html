@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>لوحة تحكم مشتل فلورا</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#2d6a06;--m:#dcecd5;--l:#e3e9df;--r:#c8321f}
+*{box-sizing:border-box;margin:0}
+body{font-family:Cairo,Tahoma,sans-serif;background:#f4f6f2;color:#141a12;line-height:1.6}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+input,select{width:100%;padding:10px 12px;border:1.5px solid var(--l);border-radius:10px;background:#fff}
+.bt{background:var(--g);color:#fff;border:0;border-radius:10px;padding:8px 18px;font-weight:600}
+.bt.s{background:#fff;color:var(--g);border:1.5px solid var(--g)}.bt.d{background:#fff;color:var(--r);border:1.5px solid var(--r)}
+#lg{max-width:340px;margin:18vh auto;background:#fff;padding:24px;border-radius:18px;display:grid;gap:12px;text-align:center}
+#app{display:none;max-width:900px;margin:auto;padding:16px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.st div{background:#fff;border-radius:14px;padding:12px 14px}.st b{display:block;font-size:24px;color:var(--g)}
+.tb{display:flex;gap:8px;margin-bottom:14px}.tb button{flex:1;padding:10px;border:0;border-radius:10px;background:#fff;font-weight:600}.tb .on{background:var(--g);color:#fff}
+.cd{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;display:grid;gap:6px}
+.rw{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.rw select{width:auto}
+.cd ul{padding-right:20px}.cd small{color:#667}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;place-items:center;padding:14px}.ov.on{display:grid}
+.fm{background:#fff;border-radius:18px;padding:18px;max-width:460px;width:100%;display:grid;gap:8px;max-height:92vh;overflow:auto}
+.nt{background:#fff6dc;border:1px solid #f2b632;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:14px}
+.em{text-align:center;color:#666;padding:30px}
+</style>
+</head>
+<body>
+<form id="lg" onsubmit="login(event)"><h2>🌿 لوحة تحكم مشتل فلورا</h2><input id="em" type="email" placeholder="الإيميل" autocomplete="username"><input id="pw" type="password" placeholder="كلمة المرور" autocomplete="current-password"><button class="bt" type="submit">دخول</button><small id="le" style="color:var(--r)"></small></form>
+
+<div id="app">
+  <div class="top"><h2>لوحة التحكم</h2><button class="bt s" onclick="logout()">خروج</button></div>
+  <div class="nt" id="msg" style="display:none"></div>
+  <div class="st"><div>الطلبات<b id="s1">0</b></div><div>طلبات جديدة<b id="s2">0</b></div><div>المبيعات (ج.م)<b id="s3">0</b></div><div>المنتجات<b id="s4">0</b></div></div>
+  <div class="tb"><button id="t1" class="on" onclick="tab(1)">الطلبات</button><button id="t2" onclick="tab(2)">المنتجات</button></div>
+  <section id="p1"><div id="ol"></div></section>
+  <section id="p2" style="display:none"><button class="bt" style="margin-bottom:12px" onclick="edit(0)">+ منتج جديد</button><div id="pl"></div></section>
+</div>
+
+<div class="ov" id="ov" onclick="if(event.target==this)closeF()">
+  <form class="fm" onsubmit="saveP(event)">
+    <h3 id="ft">منتج</h3>
+    <label>الاسم<input id="fn" required></label>
+    <label>القسم<select id="fc"></select></label>
+    <label>السعر (ج.م)<input id="fpr" type="number" min="0" required></label>
+    <label>السعر قبل الخصم (اختياري)<input id="fo" type="number" min="0"></label>
+    <label>الأحجام (مفصولة بفاصلة، اختياري)<input id="fop" placeholder="25,30,40"></label>
+    <label>رابط الصورة (اختياري)<input id="fi" type="url" placeholder="https://..."></label>
+    <label>إيموجي بديل للصورة<input id="fe" value="🌿" maxlength="4"></label>
+    <div class="rw"><button class="bt" type="submit">حفظ</button><button class="bt s" type="button" onclick="closeF()">إلغاء</button></div>
+  </form>
+</div>
+
+<script>
+const SB="https://tkjzflqktsnehzndgplz.supabase.co",KEY="sb_publishable_4ql2MssgGqsjZeNZnS4x6Q_T7-r7jBg";
+const ST=["جديد","قيد التجهيز","تم الشحن","تم التسليم","ملغي"];
+const SEED=[
+ {id:1,c:"outdoor",n:"ياسمين هندي",p:300,o:340,opt:[25,30,40,50],e:"🌼",img:""},{id:2,c:"outdoor",n:"نجيله طبيعى",p:55,o:60,e:"🌱",img:""},
+ {id:3,c:"herbs",n:"ليمون جراس",p:45,o:50,opt:[14,16,20],e:"🌾",img:""},{id:4,c:"herbs",n:"نعناع كولونيا",p:45,o:50,e:"🍃",img:""},
+ {id:5,c:"herbs",n:"روزمارى",p:45,o:50,e:"🌿",img:""},{id:6,c:"cactus",n:"صبار مطعون",p:615,o:683,e:"🌵",img:""},
+ {id:7,c:"cactus",n:"سنسيفيريا ملونة",p:360,o:400,e:"🪴",img:""},{id:8,c:"cactus",n:"كليستوكاكتوس",p:315,o:350,opt:[16,20],e:"🌵",img:""},
+ {id:9,c:"indoor",n:"ببروميا خضراء",p:240,opt:[16],e:"🪴",img:""}];
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let S=null,CATS=[],P=[],O=[],eid=0;try{S=JSON.parse(localStorage.getItem("sbs"))}catch(e){}
+function note(t){const m=$("#msg");m.textContent=t;m.style.display=t?"block":"none"}
+async function auth(body,grant){const r=await fetch(SB+"/auth/v1/token?grant_type="+grant,{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(!r.ok)return null;const j=await r.json();S={access_token:j.access_token,refresh_token:j.refresh_token};localStorage.setItem("sbs",JSON.stringify(S));return S}
+const refresh=()=>S?auth({refresh_token:S.refresh_token},"refresh_token"):null;
+async function rq(path,o={},retry=true){
+  const h={apikey:KEY,"Content-Type":"application/json",...(S?{Authorization:"Bearer "+S.access_token}:{}),...(o.h||{})};
+  const r=await fetch(SB+path,{method:o.m||"GET",headers:h,body:o.b?JSON.stringify(o.b):undefined});
+  if(r.status==401&&S&&retry&&await refresh())return rq(path,o,false);
+  if(!r.ok)throw new Error(r.status+" "+await r.text());
+  const t=await r.text();return t?JSON.parse(t):null}
+async function login(e){e.preventDefault();$("#le").textContent="";
+  const ok=await auth({email:$("#em").value.trim(),password:$("#pw").value},"password");
+  ok?boot():$("#le").textContent="الإيميل أو كلمة المرور غلط"}
+function logout(){localStorage.removeItem("sbs");location.reload()}
+async function boot(){$("#lg").style.display="none";$("#app").style.display="block";await load()}
+async function load(){try{note("");
+  [CATS,P,O]=await Promise.all([rq("/rest/v1/flora_categories?select=*&order=sort"),rq("/rest/v1/flora_products?select=*&order=id"),rq("/rest/v1/flora_orders?select=*&order=id.desc")]);
+  $("#fc").innerHTML=CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("");draw()}
+  catch(e){note("تعذر تحميل البيانات: "+e.message+" — تأكد إنك شغّلت كود الـ SQL وإنك مسجل دخول.")}}
+function tab(n){[1,2].forEach(i=>{$("#p"+i).style.display=i==n?"block":"none";$("#t"+i).classList.toggle("on",i==n)})}
+const cname=id=>(CATS.find(c=>c.id==id)||{}).name||"";
+function draw(){
+  $("#s1").textContent=O.length;$("#s2").textContent=O.filter(o=>o.status=="جديد").length;
+  $("#s3").textContent=O.filter(o=>o.status!="ملغي").reduce((a,o)=>a+Number(o.total),0);$("#s4").textContent=P.length;
+  $("#ol").innerHTML=O.length?O.map(o=>`<div class="cd"><div class="rw"><b>#${o.id} · ${esc(o.name)}</b>
+  <select onchange="setSt(${o.id},this.value)" aria-label="حالة الطلب">${ST.map(s=>`<option ${s==o.status?"selected":""}>${s}</option>`).join("")}</select></div>
+  <div>${esc(o.phone)} · ${esc(o.address)}</div><ul>${(o.items||[]).map(i=>`<li>${esc(i.n)}${i.o?" ("+esc(i.o)+")":""} × ${i.q}</li>`).join("")}</ul>
+  <div class="rw"><b>${o.total} ج.م</b><small>${new Date(o.created_at).toLocaleString("ar-EG")}</small></div>
+  <div class="rw"><a href="https://wa.me/20${o.phone.replace(/^(\+?20|0)/,"")}" target="_blank">واتساب العميل</a>${o.location?`<a href="https://www.google.com/maps?q=${esc(o.location)}" target="_blank">📍 الموقع على الخريطة</a>`:"<small>بدون موقع</small>"}</div></div>`).join(""):'<p class="em">لا توجد طلبات بعد</p>';
+  $("#pl").innerHTML=P.length?P.map(p=>`<div class="cd"><div class="rw"><b>${p.image_url?`<img src="${esc(p.image_url)}" alt="" width="36" height="36" style="border-radius:8px;vertical-align:middle">`:p.emoji} ${esc(p.name)}</b><span>${p.price} ج.م${p.old_price?` <s>${p.old_price}</s>`:""}</span></div>
+  <small>${cname(p.category_id)}${(p.options||[]).length?" · الأحجام: "+p.options.join("، "):""}${p.active?"":" · مخفي"}</small>
+  <div class="rw"><button class="bt s" onclick="edit(${p.id})">تعديل</button><button class="bt s" onclick="toggle(${p.id})">${p.active?"إخفاء":"إظهار"}</button><button class="bt d" onclick="del(${p.id})">حذف</button></div></div>`).join(""):
+  '<div class="em">لا توجد منتجات.<br><button class="bt s" style="margin-top:10px" onclick="seed()">إضافة منتجات تجريبية</button></div>'}
+const MIN={Prefer:"return=minimal"};
+async function act(f){try{await f();await load()}catch(e){note("حصل خطأ: "+e.message)}}
+const setSt=(id,v)=>act(()=>rq("/rest/v1/flora_orders?id=eq."+id,{m:"PATCH",b:{status:v},h:MIN}));
+const toggle=id=>act(()=>rq("/rest/v1/flora_products?id=eq."+id,{m:"PATCH",b:{active:!P.find(x=>x.id==id).active},h:MIN}));
+const del=id=>confirm("حذف المنتج؟")&&act(()=>rq("/rest/v1/flora_products?id=eq."+id,{m:"DELETE",h:MIN}));
+const seed=()=>act(()=>rq("/rest/v1/flora_products",{m:"POST",h:MIN,b:SEED.map(x=>({category_id:x.c,name:x.n,price:x.p,old_price:x.o||null,options:x.opt||[],emoji:x.e,image_url:null}))}));
+function edit(id){eid=id;const p=P.find(x=>x.id==id)||{category_id:CATS[0]&&CATS[0].id,emoji:"🌿",name:"",price:"",old_price:"",image_url:""};
+  $("#ft").textContent=id?"تعديل منتج":"منتج جديد";
+  $("#fn").value=p.name;$("#fc").value=p.category_id;$("#fpr").value=p.price;$("#fo").value=p.old_price||"";$("#fop").value=(p.options||[]).join(",");$("#fi").value=p.image_url||"";$("#fe").value=p.emoji;
+  $("#ov").classList.add("on")}
+function closeF(){$("#ov").classList.remove("on")}
+function saveP(e){e.preventDefault();
+  const opt=$("#fop").value.split(",").map(s=>s.trim()).filter(Boolean).map(s=>isNaN(s)?s:+s);
+  const b={category_id:$("#fc").value,name:$("#fn").value.trim(),price:+$("#fpr").value,old_price:$("#fo").value?+$("#fo").value:null,options:opt,emoji:$("#fe").value||"🌿",image_url:$("#fi").value.trim()||null};
+  closeF();act(()=>eid?rq("/rest/v1/flora_products?id=eq."+eid,{m:"PATCH",b,h:MIN}):rq("/rest/v1/flora_products",{m:"POST",b,h:MIN}))}
+if(S)boot();
+</script>
+</body>
+</html>

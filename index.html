@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مشتل فلورا | نباتات وديكور</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#2d6a06;--gd:#1f4d04;--r:#c8321f;--m:#dcecd5;--i:#141a12;--l:#e3e9df}
+*{box-sizing:border-box;margin:0}
+body{font-family:Cairo,Tahoma,sans-serif;color:var(--i);background:#fff;line-height:1.6;max-width:760px;margin:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--l);position:sticky;top:0;background:#fff;z-index:5}
+header img{height:56px}
+.ic{font-size:22px;padding:6px;position:relative}
+#cnt{position:absolute;top:-2px;left:-2px;background:var(--g);color:#fff;font-size:11px;border-radius:99px;min-width:18px;text-align:center}
+#sb{display:none;padding:10px 16px}#sb input{width:100%;padding:10px 14px;border:1.5px solid var(--l);border-radius:12px}
+.hero{margin:0;min-height:300px;display:grid;place-items:center;text-align:center;padding:24px;color:#fff;background:linear-gradient(rgba(20,50,10,.45),rgba(20,50,10,.45)),var(--hi,linear-gradient(135deg,#4c8c4a,#1f4d04)) center/cover}
+.hero h1{font-size:30px;font-weight:800}.hero p{margin:6px 0 16px}
+.btn{display:inline-block;background:#0f1d0a;color:#fff;border-radius:99px;padding:10px 32px;font-weight:600}
+.btn.o{background:#fff;color:var(--g);border:1.5px solid var(--l);border-radius:14px}
+.ti{text-align:center;margin:30px 0 14px;font-size:22px;font-weight:800}
+.ti span{border-bottom:3px solid #9cc58f;border-radius:0 0 50% 50%;padding:0 4px 4px}
+.cr{display:flex;gap:14px;overflow-x:auto;padding:0 16px 8px;scroll-snap-type:x mandatory}
+.cr a{flex:0 0 150px;scroll-snap-align:start;text-decoration:none;font-weight:600;text-align:center}
+.ci{height:150px;border-radius:20px;background:#eef4e8;display:grid;place-items:center;font-size:56px;margin-bottom:6px}
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 16px}
+.pc{background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(0,0,0,.08);padding-bottom:12px;text-align:center}
+.im{position:relative;height:170px;border-radius:20px;display:grid;place-items:center;font-size:64px;overflow:hidden}
+.im img{width:100%;height:100%;object-fit:cover}
+.bd{position:absolute;top:10px;right:10px;background:var(--r);color:#fff;font-size:12px;border-radius:99px;padding:0 12px}
+.ac{position:absolute;left:8px;bottom:8px;display:flex;flex-direction:column;background:rgba(255,255,255,.75);border-radius:99px;padding:4px}
+.ac button{font-size:18px;padding:6px}
+.pc small{display:block;margin-top:8px;color:#5d6b7c;font-weight:600}
+.pc h3{font-size:17px;font-weight:600}
+.pr b{font-size:19px}.pr s{color:#888;margin-inline-start:8px;font-size:14px}
+.ch{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.ch button{border:1.5px solid var(--l);border-radius:10px;padding:0 10px;font-size:14px}
+.ch button.on{border-color:var(--g);background:var(--m)}
+.vt{border-radius:20px;background:var(--m);display:grid;place-items:center;min-height:200px}
+.vt button{background:#0f1d0a;color:#fff;border-radius:99px;padding:8px 24px;font-weight:600}
+.em{grid-column:1/-1;text-align:center;color:#666;padding:30px}
+.ft{display:grid;gap:12px;padding:0 16px}.ft div{border:1px solid var(--l);border-radius:16px;padding:16px}
+.ft b{color:var(--g);display:block}
+.nl{margin:30px 16px;background:var(--m);border-radius:20px;padding:22px;text-align:center}
+.nl input{width:100%;padding:10px 14px;border:1.5px solid #fff;border-radius:10px;margin:10px 0}
+.nl button{background:var(--g);color:#fff;border-radius:10px;padding:8px 28px;font-weight:600}
+footer{background:var(--g);color:#fff;margin-top:36px;padding:24px 20px}
+footer h4{margin:16px 0 6px;font-size:18px}footer a{display:block;color:#e8f2e2;text-decoration:none;padding:2px 0}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;display:none}
+.ov.on{display:block}
+.dr{position:absolute;top:0;bottom:0;right:0;width:78%;max-width:340px;background:#fff;padding:16px;overflow:auto}
+.dr a{display:block;padding:12px 0;border-bottom:1px solid var(--l);text-decoration:none}
+.pn{position:absolute;inset:0;background:#f5f5f5;overflow:auto;max-width:760px;margin:auto}
+.pn .top{background:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--l)}
+.pn section{padding:16px}
+.it{display:flex;gap:12px;align-items:center;background:#fff;border-radius:14px;padding:10px;margin-bottom:10px}
+.it .th{width:64px;height:64px;border-radius:12px;background:#eef4e8;display:grid;place-items:center;font-size:30px;overflow:hidden}
+.it .th img{width:100%;height:100%;object-fit:cover}
+.it div.in{flex:1}.q button{border:1.5px solid var(--l);border-radius:8px;width:30px;background:#fff}
+.row{display:flex;justify-content:space-between;padding:4px 0}.tot{font-weight:800;font-size:19px;border-top:1px solid var(--l);margin-top:6px;padding-top:8px}
+.cp{display:flex;gap:8px;margin:12px 0}.cp input{flex:1}
+input,select,textarea{width:100%;padding:11px 14px;border:1.5px solid var(--l);border-radius:12px;background:#fff}
+.fm{border:2px dashed #555;border-radius:20px;padding:16px;margin-top:16px;display:grid;gap:10px}
+.go{background:var(--g);color:#fff;border-radius:99px;padding:12px;font-weight:800;font-size:18px;width:100%}
+.md{position:absolute;bottom:0;left:0;right:0;max-width:760px;margin:auto;background:#fff;border-radius:24px 24px 0 0;padding:18px;text-align:center}
+.md .im{height:220px;margin-bottom:8px}
+#ts{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0f1d0a;color:#fff;padding:8px 22px;border-radius:99px;z-index:40;display:none}
+</style>
+</head>
+<body>
+<header>
+  <button class="ic" onclick="openCart()" aria-label="السلة">🛒<span id="cnt">0</span></button>
+  <button class="ic" onclick="sb.style.display=sb.style.display=='block'?'none':'block';sq.focus()" aria-label="بحث" style="margin-inline-end:auto">🔍</button>
+  <img id="logo" alt="مشتل فلورا" onclick="go(null)">
+  <button class="ic" onclick="show('menu')" aria-label="القائمة">☰</button>
+</header>
+<div id="sb"><input id="sq" placeholder="ابحث عن نبات أو منتج" oninput="q=this.value.trim();cat=null;home()"></div>
+<main id="main"></main>
+
+<footer>
+  <p>البريد الإلكتروني: info@mashtalflora.com</p>
+  <p>واتساب: 01044523014</p>
+  <h4>الأقسام</h4><div id="fc"></div>
+  <h4>الصفحات</h4>
+  <a href="#">شروط الاستخدام</a><a href="#">سياسات الخصوصية</a><a href="#">سياسة الشحن</a><a href="#">سياسة الاستبدال والاسترجاع</a>
+  <h4>تابعنا</h4><a href="#">Instagram</a><a href="#">Facebook</a>
+</footer>
+
+<div class="ov" id="menu" onclick="if(event.target==this)hide('menu')"><div class="dr"><button class="ic" onclick="hide('menu')" aria-label="إغلاق">✕</button><h3 style="margin:8px 0">الأقسام</h3><div id="mc"></div></div></div>
+
+<div class="ov" id="cart"><div class="pn">
+  <div class="top"><b>ملخص طلبك</b><button class="ic" onclick="hide('cart')" aria-label="إغلاق">✕</button></div>
+  <section id="cb"></section>
+</div></div>
+
+<div class="ov" id="mod" onclick="if(event.target==this)hide('mod')"><div class="md" id="mb"></div></div>
+<div id="ts" role="status"></div>
+
+<script>
+/* ====== الإعدادات والبيانات (في المرحلة 2 هتتنقل لقاعدة البيانات) ====== */
+const CFG={wa:"201044523014",ship:70,logo:"https://files.easy-orders.net/1780237377362963697.png",hero:"",sb:"https://tkjzflqktsnehzndgplz.supabase.co",key:"sb_publishable_4ql2MssgGqsjZeNZnS4x6Q_T7-r7jBg"};
+const COUPONS={FLORA10:0.10};
+let CATS=[
+ {id:"indoor",n:"النباتات الداخلية",e:"🪴"},{id:"outdoor",n:"النباتات الخارجية",e:"🌳"},
+ {id:"herbs",n:"أعشاب المطبخ",e:"🌿"},{id:"cactus",n:"الصبارات",e:"🌵"},
+ {id:"pots",n:"الأصص",e:"🏺"},{id:"supplies",n:"مستلزمات الحدائق",e:"🧰"},
+ {id:"bundles",n:"باقات الأكثر مبيعاً",e:"🎁"},{id:"fert",n:"الأسمدة والمبيدات",e:"🧪"}];
+/* img: حط رابط صورة المنتج بدل الإيموجي */
+let P=[
+ {id:1,c:"outdoor",n:"ياسمين هندي",p:300,o:340,opt:[25,30,40,50],e:"🌼",img:""},
+ {id:2,c:"outdoor",n:"نجيله طبيعى",p:55,o:60,e:"🌱",img:""},
+ {id:3,c:"herbs",n:"ليمون جراس",p:45,o:50,opt:[14,16,20],e:"🌾",img:""},
+ {id:4,c:"herbs",n:"نعناع كولونيا",p:45,o:50,e:"🍃",img:""},
+ {id:5,c:"herbs",n:"روزمارى",p:45,o:50,e:"🌿",img:""},
+ {id:6,c:"cactus",n:"صبار مطعون",p:615,o:683,e:"🌵",img:""},
+ {id:7,c:"cactus",n:"سنسيفيريا ملونة",p:360,o:400,e:"🪴",img:""},
+ {id:8,c:"cactus",n:"كليستوكاكتوس",p:315,o:350,opt:[16,20],e:"🌵",img:""},
+ {id:9,c:"indoor",n:"ببروميا خضراء",p:240,opt:[16],e:"🪴",img:""}];
+
+/* ====== الحالة ====== */
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cn=id=>(CATS.find(c=>c.id==id)||{}).n||"",prod=id=>P.find(p=>p.id==id);
+let cart=[],cat=null,q="",disc=0,code="",selOpt=null;let loc=null;
+try{cart=JSON.parse(localStorage.getItem("fc"))||[]}catch(e){}
+const save=()=>{try{localStorage.setItem("fc",JSON.stringify(cart))}catch(e){}$("#cnt").textContent=cart.reduce((a,i)=>a+i.q,0)};
+const show=id=>$("#"+id).classList.add("on"),hide=id=>$("#"+id).classList.remove("on");
+function toast(t){const e=$("#ts");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display="none",2200)}
+const thumb=p=>p.img?`<img src="${esc(p.img)}" alt="">`:p.e;
+
+/* ====== المتجر ====== */
+const card=p=>`<div class="pc"><div class="im" style="background:#eef4e8">${thumb(p)}${p.o?`<b class="bd">خصم ${Math.round((1-p.p/p.o)*100)}%</b>`:""}
+<div class="ac"><button onclick="view(${p.id})" aria-label="عرض">👁</button><button onclick="${p.opt?`view(${p.id})`:`add(${p.id})`}" aria-label="أضف للسلة">🛒</button></div></div>
+<small>${cn(p.c)}</small><h3>${esc(p.n)}</h3><div class="pr"><b>${p.p} ج.م</b>${p.o?`<s>${p.o} ج.م</s>`:""}</div>
+${p.opt?`<div class="ch">${p.opt.map(o=>`<button onclick="view(${p.id})">${o}</button>`).join("")}</div>`:""}</div>`;
+
+function go(c){cat=c;q="";$("#sq").value="";hide("menu");home();scrollTo(0,0)}
+function home(){
+  if(cat||q){const l=P.filter(p=>(!cat||p.c==cat)&&(!q||p.n.includes(q)));
+    $("#main").innerHTML=`<h2 class="ti"><span>${q?"نتائج البحث":cn(cat)}</span></h2><div class="gr">${l.map(card).join("")||'<p class="em">لا توجد منتجات مطابقة</p>'}</div>`;return}
+  $("#main").innerHTML=`<div class="hero"><div><h1>نباتات لبيتك وحديقتك</h1><p>كل احتياجات الزراعة والعناية في مكان واحد، ونوصلك لحد باب البيت.</p><a class="btn" href="#cats">تسوق الآن</a></div></div>
+<h2 class="ti" id="cats"><span>الأقسام</span></h2>
+<div class="cr">${CATS.map(c=>`<a href="#" onclick="go('${c.id}');return false"><div class="ci">${c.e}</div>${c.n}</a>`).join("")}</div>`+
+  CATS.filter(c=>P.some(p=>p.c==c.id)).map(c=>`<h2 class="ti"><span>${c.n}</span></h2><div class="gr">${P.filter(p=>p.c==c.id).slice(0,3).map(card).join("")}<div class="vt"><button onclick="go('${c.id}')">عرض الكل</button></div></div>`).join("")+
+  `<div class="nl"><b>خليك على اطلاع</b><p>اشترك ليوصلك جديدنا وعروضنا.</p><input id="em" type="email" placeholder="البريد الإلكتروني"><button onclick="toast('تم الاشتراك');em.value=''">اشترك</button></div>
+<h2 class="ti"><span style="color:var(--g)">مميزاتنا</span></h2><div class="ft"><div><b>طرق دفع متعددة وآمنة</b>الدفع عند الاستلام وطرق أخرى.</div><div><b>توصيل لباب البيت</b>اطلب نباتاتك اليوم ونوصلها لك.</div></div>`;
+}
+
+/* ====== المنتج ====== */
+function view(id){const p=prod(id);selOpt=p.opt?p.opt[0]:null;
+  $("#mb").innerHTML=`<div class="im" style="background:#eef4e8">${thumb(p)}</div><h3>${esc(p.n)}</h3><div class="pr"><b>${p.p} ج.م</b>${p.o?`<s>${p.o} ج.م</s>`:""}</div>
+  ${p.opt?`<p style="margin-top:8px">اختار الحجم:</p><div class="ch" id="oc">${p.opt.map((o,i)=>`<button class="${i?"":"on"}" onclick="selOpt=${o};[...oc.children].forEach(b=>b.classList.toggle('on',b==this))">${o}</button>`).join("")}</div>`:""}
+  <button class="go" style="margin-top:14px" onclick="add(${id},selOpt);hide('mod')">أضف للسلة</button>`;show("mod")}
+function add(id,o=null){const k=cart.find(i=>i.id==id&&i.o==o);k?k.q++:cart.push({id,o,q:1});save();toast("تمت الإضافة للسلة")}
+
+/* ====== السلة والطلب ====== */
+function getLoc(){if(!navigator.geolocation){toast("المتصفح لا يدعم تحديد الموقع");return}
+  toast("جاري تحديد موقعك...");
+  navigator.geolocation.getCurrentPosition(p=>{loc=p.coords.latitude.toFixed(6)+","+p.coords.longitude.toFixed(6);$("#ls").textContent="✔ تم تحديد موقعك";toast("تم تحديد الموقع")},
+   ()=>toast("اسمح للمتصفح بالوصول للموقع وجرّب تاني"),{enableHighAccuracy:true,timeout:15000})}
+function openCart(){drawCart();show("cart")}
+function drawCart(){
+  if(!cart.length){$("#cb").innerHTML='<p class="em">السلة فاضية</p>';return}
+  const sub=cart.reduce((a,i)=>a+prod(i.id).p*i.q,0),d=Math.round(sub*disc),tot=sub-d+CFG.ship;
+  $("#cb").innerHTML=cart.map((i,x)=>{const p=prod(i.id);return `<div class="it"><div class="th">${thumb(p)}</div><div class="in"><b>${esc(p.n)}</b>${i.o?`<div>الحجم: ${i.o}</div>`:""}
+  <div class="q"><button onclick="qty(${x},-1)">−</button> ${i.q} <button onclick="qty(${x},1)">+</button> <button onclick="qty(${x},-99)" aria-label="حذف">🗑</button></div></div><b>${p.p*i.q} ج.م</b></div>`}).join("")+
+  `<div class="cp"><input id="cc" placeholder="كود الخصم" value="${esc(code)}"><button class="btn o" onclick="coupon()">تطبيق</button></div>
+  <div class="row"><span>إجمالي المنتجات</span><b>${sub} ج.م</b></div>${d?`<div class="row"><span>الخصم</span><b>- ${d} ج.م</b></div>`:""}
+  <div class="row"><span>تكلفة الشحن</span><b>${CFG.ship} ج.م</b></div><div class="row tot"><span>الإجمالي</span><span>${tot} ج.م</span></div>
+  <form class="fm" onsubmit="order(event)" novalidate><b>يرجى إدخال معلوماتك لإكمال الطلب</b>
+  <input id="fn" placeholder="اسمك بالكامل" autocomplete="name"><input id="fp" type="tel" placeholder="رقم الهاتف" autocomplete="tel" inputmode="numeric">
+  <input id="fg" placeholder="المحافظة / المنطقة"><textarea id="fa" rows="2" placeholder="العنوان بالتفصيل"></textarea>
+  <button type="button" class="btn o" onclick="getLoc()">📍 إرسال موقعي الحالي</button><small id="ls" style="color:var(--g)">${loc?"✔ تم تحديد موقعك":""}</small>
+  <button class="go" type="submit">إتمام الطلب</button></form>`}
+function qty(x,d){cart[x].q+=d;if(cart[x].q<1)cart.splice(x,1);save();drawCart()}
+function coupon(){const c=$("#cc").value.trim().toUpperCase();if(COUPONS[c]){disc=COUPONS[c];code=c;toast("تم تطبيق الكود")}else{disc=0;code="";toast("الكود غير صحيح")}drawCart()}
+function order(e){e.preventDefault();
+  const n=$("#fn").value.trim(),ph=$("#fp").value.replace(/\s/g,""),g=$("#fg").value.trim(),a=$("#fa").value.trim();
+  if(n.length<2||!/^(01|\+?201)[0-9]{9}$/.test(ph)||g.length<2||a.length<5){toast("راجع الاسم والموبايل والعنوان");return}
+  const sub=cart.reduce((s,i)=>s+prod(i.id).p*i.q,0),d=Math.round(sub*disc),tot=sub-d+CFG.ship;
+  const L=["طلب جديد من مشتل فلورا","الاسم: "+n,"الموبايل: "+ph,"العنوان: "+g+" - "+a,...(loc?["الموقع على الخريطة: https://www.google.com/maps?q="+loc]:[]),"","المنتجات:",
+   ...cart.map(i=>{const p=prod(i.id);return "- "+p.n+(i.o?" ("+i.o+")":"")+" × "+i.q+" = "+p.p*i.q+" ج.م"}),"",
+   "المنتجات: "+sub+" ج.م"+(d?"\nالخصم: "+d+" ج.م":"")+"\nالشحن: "+CFG.ship+" ج.م\nالإجمالي: "+tot+" ج.م"];
+  fetch(CFG.sb+"/rest/v1/flora_orders",{method:"POST",keepalive:true,headers:{apikey:CFG.key,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({name:n,phone:ph,address:g+" - "+a,location:loc,items:cart.map(i=>{const p=prod(i.id);return{n:p.n,o:i.o,q:i.q,p:p.p}}),subtotal:sub,discount:d,shipping:CFG.ship,total:tot})}).catch(()=>{});
+  window.open("https://wa.me/"+CFG.wa+"?text="+encodeURIComponent(L.join("\n")),"_blank");
+  cart=[];disc=0;code="";loc=null;save();hide("cart");toast("تم تجهيز طلبك على واتساب")}
+
+/* ====== تشغيل ====== */
+$("#logo").src=CFG.logo;if(CFG.hero)document.documentElement.style.setProperty("--hi","url("+CFG.hero+")");
+function renderNav(){const links=CATS.map(c=>`<a href="#" onclick="go('${c.id}');return false">${c.n}</a>`).join("");
+$("#mc").innerHTML='<a href="#" onclick="go(null);return false">الرئيسية</a>'+links;$("#fc").innerHTML=links}
+async function loadData(){try{
+  const h={apikey:CFG.key},g=t=>fetch(CFG.sb+"/rest/v1/"+t,{headers:h}).then(r=>r.json());
+  const [c,p]=await Promise.all([g("flora_categories?select=*&order=sort"),g("flora_products?select=*&active=eq.true&order=id")]);
+  if(Array.isArray(c)&&c.length)CATS=c.map(x=>({id:x.id,n:x.name,e:x.emoji||"🌿"}));
+  if(Array.isArray(p))P=p.map(x=>({id:x.id,c:x.category_id,n:x.name,p:+x.price,o:x.old_price?+x.old_price:0,opt:x.options&&x.options.length?x.options:null,e:x.emoji||"🌿",img:x.image_url||""}));
+  cart=cart.filter(i=>prod(i.id));save()}catch(e){}}
+$("#main").innerHTML='<p class="em" style="padding:60px 16px">جاري التحميل...</p>';
+loadData().finally(()=>{renderNav();save();home()});
+</script>
+</body>
+</html>
